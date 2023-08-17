@@ -6,12 +6,12 @@ import Game from "../components/Game";
 
 const Home = () => {
   const dispatch = useDispatch();
-    const popularGames = useSelector((state) => state.game.popular);
-    const upcomingGames = useSelector((state) => state.game.upcoming);
-    const newGames = useSelector((state) => state.game.newGames);
-//   const { popularGames, upcomingGames, newGames } = useSelector(
-//     (state) => state.game
-//   );
+  const popularGames = useSelector((state) => state.game.popular);
+  const upcomingGames = useSelector((state) => state.game.upcoming);
+  const newGames = useSelector((state) => state.game.newGames);
+  //   const { popularGames, upcomingGames, newGames } = useSelector(
+  //     (state) => state.game
+  //   );
 
   useEffect(() => {
     dispatch(popularGamesURL());
