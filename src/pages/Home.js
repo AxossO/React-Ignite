@@ -24,7 +24,11 @@ const Home = () => {
       <h2>Upcoming Games</h2>
       <div className="games">
         {upcomingGames.map((game) => (
-          <Game />
+          <Game
+            name={game.name}
+            released={game.released}
+            image={game.background_image}
+          />
         ))}
       </div>
     </div>
