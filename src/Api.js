@@ -1,4 +1,7 @@
-const api_key = "8c6c8a86a1c6443f83617e960d410505";
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
+
+const api_key = "060c3a4692d040f68a15cc03ba509436";
 const base_url = `https://api.rawg.io/api/`;
 
 const getCurrentMonth = () => {
@@ -29,5 +32,29 @@ const lastYear = `${currentYear - 1}-${currentMonth}-${currentDay}`;
 const nextYear = `${currentYear + 1}-${currentMonth}-${currentDay}`;
 
 const popular_games = `games?key=${api_key}&dates=${lastYear},${currentDate}&ordering=-rating&page_size=10`;
+const upcoming_games = `games?key=${api_key}&dates=${currentDate},${nextYear}&orering=-added&page_size=10`;
+const new_games = `games?key=${api_key}&dates=${lastYear},${currentDate}&orering=-released&page_size=10`;
 
-export const popularGamesURL = () => `${base_url}${popular_games}`;
+const CombineUrl = () => `${base_url}${popular_games}`;
+const upcomingGamesCombiner = () => `${base_url}${upcoming_games}`;
+const newGamesCombiner = () => `${base_url}${new_games}`;
+
+export const popularGamesURL = createAsyncThunk(
+  "games/popularGamesURL",
+  async () => {
+    const response = await axios.get(CombineUrl());
+    return response.data.results;
+  }
+);
+
+export const upcomingGamesUrl = createAsyncThunk(
+  "games/upcomingGamesUrl",
+  async () => {
+    const response = await axios.get(upcomingGamesCombiner());
+    return response.data.results;
+  }
+);
+export const newGamesUrl = createAsyncThunk("games/newGamesUrl", async () => {
+  const response = await axios.get(newGamesCombiner());
+  return response.data.results;
+});
