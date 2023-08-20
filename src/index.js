@@ -2,14 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { userReducer } from "./reducers/gameReducers";
-import { gameReducers } from "./reducers/gameReducers";
+import { gameIdReducer, gameReducers } from "./reducers/gameReducers";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
+import { BrowserRouter } from "react-router-dom";
 const store = configureStore({
   reducer: {
     game: gameReducers,
-    user: userReducer,
+    // user: userReducer,
+    id: gameIdReducer,
   },
 });
 
@@ -17,7 +18,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>
 );

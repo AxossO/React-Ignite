@@ -1,15 +1,25 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { loadDetail } from "../Api";
+import { Link } from "react-router-dom";
+import { smallImage } from "../utli";
+import { motion } from "framer-motion";
 
-const Game = ({ image, name, released }) => {
+const Game = ({ image, name, released, id }) => {
+  const stringId = id.toString();
+  const dispatch = useDispatch();
+  const loadidHandler = () => {
+    dispatch(loadDetail(id));
+    document.body.style.overflow = "hidden";
+  };
   return (
-    <div className="game">
-      {/* {popularGames.map((game) => (
-        <div key={game.id}>{game.name}</div>
-      ))} */}
-      <h3>{name}</h3>
-      <p>{released}</p>
-      <img className="game-image" src={image} alt={name} />
-    </div>
+    <motion.div layoutId={stringId} onClick={loadidHandler} className="game">
+      <Link to={`/game/${id}`}>
+        <motion.h3 layoutId={`title ${stringId}`}>{name}</motion.h3>
+        <p>{released}</p>
+        <motion.img layoutId={`image ${stringId}`} className="game-image" src={smallImage(image, 1280)} alt={name} />
+      </Link>
+    </motion.div>
   );
 };
 

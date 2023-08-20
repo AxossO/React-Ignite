@@ -3,12 +3,19 @@ import { useEffect } from "react";
 import { newGamesUrl, popularGamesURL, upcomingGamesUrl } from "../Api";
 import { useDispatch, useSelector } from "react-redux";
 import Game from "../components/Game";
-
+import GameDetail from "../components/GameDetail";
+import { useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 const Home = () => {
   const dispatch = useDispatch();
   const popularGames = useSelector((state) => state.game.popular);
   const upcomingGames = useSelector((state) => state.game.upcoming);
   const newGames = useSelector((state) => state.game.newGames);
+  const location = useLocation();
+  const pathId = location.pathname.split("/")[2];
+  console.log(pathId);
+  // const gameId = useSelector((state) => state.id.game);
+
   //   const { popularGames, upcomingGames, newGames } = useSelector(
   //     (state) => state.game
   //   );
@@ -20,7 +27,10 @@ const Home = () => {
   }, [dispatch]);
 
   return (
-    <div className="game-list-container">
+    <motion.div className="game-list-container">
+      <AnimatePresence>
+        {pathId && <GameDetail pathId={pathId} />}
+      </AnimatePresence>
       <h2>Upcoming Games</h2>
       <div className="games">
         {upcomingGames.map((game) => (
@@ -28,10 +38,36 @@ const Home = () => {
             name={game.name}
             released={game.released}
             image={game.background_image}
+            key={game.id}
+            id={game.id}
           />
         ))}
       </div>
-    </div>
+      <h2>Popular Games</h2>
+      <div className="games">
+        {popularGames.map((game) => (
+          <Game
+            name={game.name}
+            released={game.released}
+            image={game.background_image}
+            key={game.id}
+            id={game.id}
+          />
+        ))}
+      </div>
+      <h2>New Games</h2>
+      <div className="games">
+        {newGames.map((game) => (
+          <Game
+            name={game.name}
+            released={game.released}
+            image={game.background_image}
+            key={game.id}
+            id={game.id}
+          />
+        ))}
+      </div>
+    </motion.div>
   );
 };
 export default Home;
