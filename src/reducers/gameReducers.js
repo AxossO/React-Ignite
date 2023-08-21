@@ -3,6 +3,7 @@ import {
   loadDetail,
   newGamesUrl,
   popularGamesURL,
+  searchGameURL,
   upcomingGamesUrl,
 } from "../Api";
 
@@ -16,7 +17,11 @@ const initialState = {
 const gameSlice = createSlice({
   name: "game",
   initialState,
-  reducers: {},
+  reducers: {
+    clearSearch: (state) => {
+      state.searched = [];
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(popularGamesURL.fulfilled, (state, action) => {
@@ -27,9 +32,14 @@ const gameSlice = createSlice({
       })
       .addCase(upcomingGamesUrl.fulfilled, (state, action) => {
         state.upcoming = action.payload;
+      })
+      .addCase(searchGameURL.fulfilled, (state, action) => {
+        state.searched = action.payload;
       });
   },
 });
+export const { clearSearch } = gameSlice.actions;
+
 export const gameReducers = gameSlice.reducer;
 
 // const gameIdSlice = createSlice({

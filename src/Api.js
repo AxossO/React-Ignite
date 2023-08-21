@@ -70,3 +70,13 @@ export const newGamesUrl = createAsyncThunk("games/newGamesUrl", async () => {
   const response = await axios.get(newGamesCombiner());
   return response.data.results;
 });
+
+const searchGameCombiner = (game_name) =>
+  `${base_url}games${api_key}&search=${game_name}&page_size=9`;
+export const searchGameURL = createAsyncThunk(
+  "games/search",
+  async (game_name) => {
+    const response = await axios.get(searchGameCombiner(game_name));
+    return response.data.results;
+  }
+);
