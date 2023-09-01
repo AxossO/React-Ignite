@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/React-Ignite/static/css/main.e7a219e9.css",
+    "main.js": "/React-Ignite/static/js/main.1027a3b3.js",
+    "static/js/787.875c6a88.chunk.js": "/React-Ignite/static/js/787.875c6a88.chunk.js",
+    "static/media/steam.svg": "/React-Ignite/static/media/steam.840878ac8ae0e05b7d7a1091cffd0745.svg",
+    "static/media/xbox.svg": "/React-Ignite/static/media/xbox.63a50e86ebde9662ba53743bc1079c53.svg",
+    "static/media/gamepad.svg": "/React-Ignite/static/media/gamepad.98eab601c2c8b411c2ccb300cde1515b.svg",
+    "static/media/ps4.svg": "/React-Ignite/static/media/ps4.1919c87a34a5ccc95acc6a6c38fcabd5.svg",
+    "index.html": "/React-Ignite/index.html",
+    "static/media/nintendo.svg": "/React-Ignite/static/media/nintendo.a909be56de8aa6519a4f0e90fc6bdd72.svg",
+    "static/media/psss5.svg": "/React-Ignite/static/media/psss5.6971c806278bcc7f32d65e052bbe5c5f.svg",
+    "static/media/apple.svg": "/React-Ignite/static/media/apple.aed8126aa230f2eb33526f7b9e63ed04.svg",
+    "static/media/logo.svg": "/React-Ignite/static/media/logo.9b6b8655566296b0edaa86ec3dbac3a0.svg",
+    "main.e7a219e9.css.map": "/React-Ignite/static/css/main.e7a219e9.css.map",
+    "main.1027a3b3.js.map": "/React-Ignite/static/js/main.1027a3b3.js.map",
+    "787.875c6a88.chunk.js.map": "/React-Ignite/static/js/787.875c6a88.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e7a219e9.css",
+    "static/js/main.1027a3b3.js"
+  ]
+}
